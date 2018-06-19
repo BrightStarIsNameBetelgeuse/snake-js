@@ -12,6 +12,6 @@ npm run dev
 
 # Run in prod mode
 
-npm start \
+npm start
 
 deploying at localhost:8081
