@@ -1,0 +1,15 @@
+{
+    "presets": [ "env", "es2015", "stage-0"],
+    "plugins": [
+        [
+            "root-import", {
+                "rootPathSuffix": "src",
+                "rootPathPrefix": "@"
+            },
+            {
+                "rootPathSuffix": "./",
+                "rootPathPrefix": "~"
+            }
+        ]
+    ]
+}
