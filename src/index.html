@@ -6,17 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div class="app-container">
-      <div id="game-field">
+  <ul class="menu">
+    <li><a id="dom">DOM Snake</a></li>
+    <li><a id="canvas">Canvas Snake</a></li>
+  </ul>
+  <div class="app-container dom">
+      <div id="dom-field" class="dom-field">
           <div class="food-block"></div>
-          <div class="gameover-block">
-            <div class="gameover-block__text">Game Over! Your score is <span id="result"></span></div>
-            <button type="button" class="button" id="restart">Restart</button>
-          </div>
-        </div>
-        <div class="score">
-          <div>Score: <div id="score"></div></div>
-        </div>
+      </div>
+      <canvas id="canvas-field" class="dom-field"></canvas>
+      <div class="score">
+        <div>Score: <div id="score"></div></div>
+      </div>
+      <div class="gameover-block">
+          <div class="gameover-block__text">Game Over! Your score is <span id="result"></span></div>
+          <button type="button" class="button" id="restart">Restart</button>
+      </div>
   </div>
 </body>
 </html>

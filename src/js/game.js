@@ -1,9 +1,7 @@
 import SnakeState from './snake';
 import * as constants from './constants';
-import 'normalize.css';
-import '@/styles/snake.css';
 
-const gameField = window['game-field'];
+const gameField = window['dom-field'];
 const columns = 30;
 const rows = 18;
 let state = SnakeState.initialState(columns, rows);
@@ -26,7 +24,8 @@ const draw = () => {
     // draw snake
     const snakeCollection = document.getElementsByClassName('snake-block');
     if (state.crash) {
-        gameOver();
+        reset();
+        document.getElementsByClassName('gameover-block')[0].classList.add('shown');
     } else {
         if (snakeCollection.length < state.snake.length) {
             gameField.insertBefore(getSnakeBlock(state.snake[0]), snakeCollection[0]);
@@ -77,8 +76,8 @@ const mapKeyToMove = key => {
         }
     }
 };
-let animationFrameId;
-function keyEventistener(event) {
+
+function keyEventListener(event) {
     const keyCode = event.keyCode;
     if (keyCode >= constants.ARROW_LEFT_KEY && keyCode <= constants.ARROW_DOWN_KEY) {
         state = SnakeState.enqueueMove(state, mapKeyToMove(keyCode));
@@ -103,16 +102,17 @@ function initialize() {
     draw();
 }
 
-function gameOver() {
+function reset() {
+    animationFrameId = 0;
     state = SnakeState.initialState(columns, rows);
     [].slice.call(gameField.getElementsByClassName('snake-block')).forEach(el => {
         gameField.removeChild(el);
     });
     window.result.textContent = score;
-    document.getElementsByClassName('gameover-block')[0].classList.add('shown');
+    window.removeEventListener('keydown', keyEventListener);
 }
 
-window.addEventListener('keydown', keyEventistener, 300);
+window.addEventListener('keydown', keyEventListener);
 window.restart.addEventListener('click', initialize);
 
-export default { initialize };
+export default { initialize, reset };

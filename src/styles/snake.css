@@ -1,7 +1,40 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #444;
+}
+.menu {
+    display: flex;
+    list-style: none;
+}
+.menu li {
+    display: block;
+    cursor: pointer;
+    border: 2px solid #444;
+    border-left: none;
+    transition: all 0.3s;
+    background-color: white;
+}
+.menu li a {
+    padding: 15px;
+    display: block;
+}
+.menu li:first-child {
+    border-left: 2px solid #444;
+}
+.menu li:hover {
+    color: white;
+    background-color: #444;
+}
 .app-container {
     display: flex;
     margin: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+}
+.app-container.dom #canvas-field {
+    display: none;
+}
+.app-container.canvas #dom-field {
+    display: none;
 }
 .button {
     display: inline-block;
@@ -38,7 +71,7 @@
 .button:focus {
     outline: none;
 }
-#game-field {
+.dom-field {
     position: relative;
     box-sizing: content-box;
     background-color: #444;
@@ -52,7 +85,7 @@
     left: 50%;
     width: 250px;
     margin-top: -25px;
-    margin-left: -125px;
+    margin-left: -350px;
     text-align: center;
     z-index: -1;
 }
